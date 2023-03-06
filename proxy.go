@@ -20,6 +20,8 @@ type ProxyHttpServer struct {
 	KeepDestinationHeaders bool
 	// setting Verbose to true will log information on each request sent to the proxy
 	Verbose         bool
+	// WarnAsVerbose, when true, cause warnings to be silenced unless Verbose is true.
+	WarnAsVerbose   bool
 	Logger          Logger
 	NonproxyHandler http.Handler
 	reqHandlers     []ReqHandler

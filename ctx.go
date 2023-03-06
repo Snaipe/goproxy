@@ -76,7 +76,9 @@ func (ctx *ProxyCtx) Logf(msg string, argv ...interface{}) {
 //		return r, nil
 //	})
 func (ctx *ProxyCtx) Warnf(msg string, argv ...interface{}) {
-	ctx.printf("WARN: "+msg, argv...)
+	if !ctx.Proxy.WarnAsVerbose || ctx.Proxy.Verbose {
+		ctx.printf("WARN: "+msg, argv...)
+	}
 }
 
 var charsetFinder = regexp.MustCompile("charset=([^ ;]*)")
